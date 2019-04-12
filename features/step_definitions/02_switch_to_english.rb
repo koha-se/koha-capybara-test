@@ -4,7 +4,7 @@
 #  So that I go to the English OPAC
 
 Given(/^I am on the Swedish Opac$/) do
-  visit(KOHA_TEST_OPAC)
+  visit(KOHA_TEST_OPAC_BASE)
   expect(page).to have_content 'Logga in på ditt konto'
 end
 
