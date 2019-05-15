@@ -3,4 +3,4 @@
 Feature: Go to opac login page, login
 Scenario:
   Given I log in
-  Then I am logged in
+  Then I am logged in to opac
