@@ -13,7 +13,7 @@ module Login
   def staff_login()
     visit(KOHA_TEST_STAFF_BASE + KOHA_TEST_STAFF_LOGIN_PAGE)
     # debug to see what page we are on
-    expect(page).to have_content 'LUBcat Test'
+    expect(page).to have_content 'LUBcat'
     fill_in 'j_username', with: USERNAME_ADAM
     fill_in 'j_password', with: PW_ADAM
     click_button 'LOGGA IN'
@@ -30,7 +30,19 @@ module Login
       expect(page).to have_content FIRSTNAME_ADAM
       click_link FIRSTNAME_ADAM
       click_link 'Logga ut'
-    end
+   
     expect(page).to have_content 'Du har loggat ut'
   end
+
+  def checkin_book()
+    visit(KOHA_TEST_STAFF_BASE) do
+     fill_in '.residentsearch', with: barcode
+   
+    click_button 'submit'
+   end 
+    expect(page).to have_content 'Återlämnade exemplar'
+  end
+ end
 end
+
+
