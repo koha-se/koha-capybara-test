@@ -45,4 +45,15 @@ module Login
  end
 end
 
+# def reserve_book()
+#  visit(KOHA_TEST_STAFF_BASE + '/cgi-bin/koha/reserve/request.pl?biblionumber=1183707') do
+#  fill_in '.patron', with: '0471502349'
+#  click_button 'submit'
+#  choose(checkitem, 'value="948261"')
 
+  def add_request()
+    visit(KOHA_TEST_STAFF_BASE + "/cgi-bin/koha/reserve/request.pl?biblionumber=758165")
+    fill_in 'patron', with: '0471502349'
+    click_button 'Sök'
+    click_button 'Reservera', match: :first
+   end 
