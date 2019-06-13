@@ -15,10 +15,11 @@
 Given /^I am logged in$/ do
   staff_login
   add_request
+#  expect(page).to have_content('bajsat')
  end 
 
 And /^on the patron's page$/ do
-   click_link '0471502349' 
+   click_on('0471502349') 
  expect(page).to have_content('Testkonto')
 
  end

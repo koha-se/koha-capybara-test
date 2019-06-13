@@ -19,6 +19,21 @@ module Login
     click_button 'LOGGA IN'
   end
 
+def add_request()
+   visit (KOHA_TEST_STAFF_BASE + "/cgi-bin/koha/reserve/request.pl?biblionumber=758165")
+    fill_in 'patron', with: PATRON_LUCARD
+    expect(page).to have_content 'Testkonto'
+    click_button 'Sök'
+    click_button 'Reservera', match: :first
+   end
+
+ def checkin_book()
+      visit (KOHA_TEST_STAFF_BASE)
+      click_link 'Återlämna'
+      fill_in 'ret_barcode', with: '15000600906674'
+      click_button 'Skicka'
+    end
+
   def opac_logout()
     visit(KOHA_TEST_OPAC_BASE)
     click_link 'Logga ut'
@@ -34,26 +49,8 @@ module Login
     expect(page).to have_content 'Du har loggat ut'
   end
 
-  def checkin_book()
-    visit(KOHA_TEST_STAFF_BASE) do
-     fill_in '.residentsearch', with: barcode
-   
-    click_button 'submit'
-   end 
-    expect(page).to have_content 'Återlämnade exemplar'
-  end
- end
 end
 
-# def reserve_book()
-#  visit(KOHA_TEST_STAFF_BASE + '/cgi-bin/koha/reserve/request.pl?biblionumber=1183707') do
-#  fill_in '.patron', with: '0471502349'
-#  click_button 'submit'
-#  choose(checkitem, 'value="948261"')
+end
 
-  def add_request()
-    visit(KOHA_TEST_STAFF_BASE + "/cgi-bin/koha/reserve/request.pl?biblionumber=758165")
-    fill_in 'patron', with: '0471502349'
-    click_button 'Sök'
-    click_button 'Reservera', match: :first
-   end 
+ 
