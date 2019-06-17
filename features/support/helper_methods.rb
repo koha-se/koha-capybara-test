@@ -34,6 +34,15 @@ def add_request()
       click_button 'Skicka'
     end
 
+def update_patron()
+    visit (KOHA_TEST_STAFF_BASE)
+    fill_in 'findborrower', with: '1082860590'
+    click_button 'Skicka'
+    find("[id=editpatron]").click
+    select('Externa låntagare bosatta i Sverige', :from => 'categorycode_entry')
+    click_button 'Spara'
+  end
+
   def opac_logout()
     visit(KOHA_TEST_OPAC_BASE)
     click_link 'Logga ut'
