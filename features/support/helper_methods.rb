@@ -43,6 +43,20 @@ def update_patron()
     click_button 'Spara'
   end
 
+def add_fee()
+   visit (KOHA_TEST_STAFF_BASE)
+   fill_in 'findborrower', with: '1082860590'
+   click_button 'Skicka'
+   click_link 'Böter'
+   click_link 'Skapa manuell faktura'
+   select('Böter', :from => 'invoice_type')
+   fill_in 'barcode', with: '15000400798441'
+   fill_in 'amount', with: '10'
+   click_button 'Spara' 
+   expect(page).to have_text 'Generation X'
+   click_link 'LUBcat'
+  end
+
   def opac_logout()
     visit(KOHA_TEST_OPAC_BASE)
     click_link 'Logga ut'
