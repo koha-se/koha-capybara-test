@@ -4,7 +4,6 @@ module Login
   def opac_login()
     visit(KOHA_TEST_OPAC_BASE + KOHA_TEST_OPAC_LOGIN_PAGE)
     # debug to see what page we are on
-    expect(page).to have_content 'LUBcat Test'
     fill_in 'j_username', with: USERNAME_ADAM
     fill_in 'j_password', with: PW_ADAM
     click_button 'LOGGA IN'
@@ -57,10 +56,27 @@ def add_fee()
    click_link 'LUBcat'
   end
 
+def delete_hold()
+   visit (KOHA_TEST_STAFF_BASE)
+   expect(page).to have_text 'Sök låntagare'
+   fill_in 'findborrower', with: '0471502349'
+   visit(KOHA_TEST_STAFF_BASE + "/cgi-bin/koha/circ/circulation.pl?borrowernumber=3348286#reserves")
+   expect(page).to have_text 'London'
+   select('JA', :from => 'rank-request')
+   page.execute_script("$('input.cancel').click()");
+  end
+
   def opac_logout()
     visit(KOHA_TEST_OPAC_BASE)
     click_link 'Logga ut'
   end
+
+  def opac_open_exemplar() 
+    visit(KOHA_TEST_OPAC_BASE)
+    fill_in 'translControl1', with: 'Robert Doisneau'
+    click_button 'Sök'
+    click_link 'Robert Doisneau : retrospective / Peter Hamilton'
+   end 
 
   def staff_logout()
     visit(KOHA_TEST_STAFF_BASE)
