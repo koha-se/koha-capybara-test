@@ -16,25 +16,32 @@
 
 Given /^I am logged in to staff page$/ do
   staff_login
-  checkin_book
- end 
+end 
 
 When /^I type lucard$/ do
   fill_in 'findborrower', with: '1082860590' 
-  end
+end
 
 And /^click Skicka$/ do
   click_button 'Skicka', match: :first
-  end 
+end 
 
 And /^type barcode$/ do
   fill_in 'barcode', with: 15000600906674 
-  end
+end
 
 And /^click Låna ut$/ do
   click_button 'Låna ut'
+  if page.has_content?("Ja, låna ut (Y)")
+    puts "Låntagaren har böter.\n"
+    click_button("Ja, låna ut (Y)")
+  else
+    puts "Låntagaren har inga böter\n"
   end
+end
 
 Then /^I will see the text 'Utlånad: Tillrättalägganden' on the screen$/ do
   expect(page).to have_content 'Utlånad: Tillrättalägganden' 
-  end
+  checkin_book
+  staff_logout
+end

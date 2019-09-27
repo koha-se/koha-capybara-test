@@ -12,3 +12,4 @@ Capybara.register_driver :selenium_chrome do |app|
 end
 
 Capybara.default_driver = :selenium_chrome
+Capybara.current_session.current_window.resize_to(1400, 1400)

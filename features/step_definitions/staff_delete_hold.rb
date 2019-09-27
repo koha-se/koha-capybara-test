@@ -15,32 +15,28 @@
 Given /^I am logged in$/ do
   staff_login
   add_request
-#  expect(page).to have_content('bajsat')
- end 
+end 
 
 And /^on the patron's page$/ do
-   click_on('0471502349') 
- expect(page).to have_content('Testkonto')
-
- end
+  click_on(CARD_FILIPPA) 
+  expect(page).to have_text(FULLNAME_FILIPPA)
+end
 
 When /^I click on Holds tab$/ do
-   visit(KOHA_TEST_STAFF_BASE + "/cgi-bin/koha/circ/circulation.pl?borrowernumber=3348286#reserves")
+   click_link('1 Reservation(er)')
    expect(page).to have_text('bajsat')
-
-  end
+end
 
 And /^chose JA in the Radera column drop down menu$/ do
   expect(page).to have_select('rank-request')
   select('JA', :from => 'rank-request')
-  
- end
+end
 
 And /^click Annullera markerade reservationer$/ do
   page.execute_script("$('input.cancel').click()");
-  end
+end
 
 Then /^I will see '0 Reservationer' on the screen$/ do
   expect(page). to have_text('0 Reservationer')
-  end
+end
 

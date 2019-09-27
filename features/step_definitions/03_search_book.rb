@@ -1,5 +1,5 @@
 Given(/^I navigated to the OPAC front page$/) do
-  visit(KOHA_TEST_OPAC_BASE)
+  visit(KOHA_OPAC_BASE)
 end
 
 When(/^I search for 'takeaway'$/) do

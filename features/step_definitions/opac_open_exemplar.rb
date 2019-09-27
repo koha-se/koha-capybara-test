@@ -9,15 +9,15 @@
 
 
 Given /^I have searched for Robert Doisneau in the opac$/ do
-    visit(KOHA_TEST_OPAC_BASE) 
+    visit(KOHA_OPAC_BASE) 
     fill_in 'translControl1', with: 'Robert Doisneau'
     click_button 'Sök'
-   end
+end
 
 When /^I click on Robert Doisneau retrospective Peter Hamilton$/ do
     click_link 'Robert Doisneau : retrospective / Peter Hamilton'
-   end
+end
 
 Then /^I should see the Exemplar view$/ do
-    expect(page).to have_text 'Detaljer'
-   end
+    expect(page).to have_text 'Exemplar'
+end

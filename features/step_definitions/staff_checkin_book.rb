@@ -10,7 +10,6 @@
 
 Given /^I have chosen the Återlämna tab on the search box$/ do
   staff_login
-
 end
 
 When /^I type barcode in box$/ do

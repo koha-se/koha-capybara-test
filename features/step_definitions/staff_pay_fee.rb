@@ -11,24 +11,24 @@
 #   Then I see the text 'Totalt skyldig:' on the screen
 
 Given /^I am on the patron's pay fee page$/ do
-   staff_login
-   add_fee
-   fill_in 'findborrower', with: '1082860590'
-   click_button 'Skicka'
-   expect(page).to have_text 'Filippa'
-   click_link 'Böter'
-   expect(page).to have_text 'Betala böter'
-  end
+  staff_login
+  add_fee
+  fill_in 'findborrower', with: CARD_FILIPPA
+  click_button 'Skicka'
+  expect(page).to have_text FULLNAME_FILIPPA
+  click_link STAFF_ACCOUNTING_LINK
+  expect(page).to have_text STAFF_PAYMENT_TAB
+end
 
 When /^I click on Betala$/ do
-   click_button 'Betala'
-   expect(page).to have_text 'Betala en enskild bot'
-  end
+  click_button 'Betala', match: :first
+  expect(page).to have_text 'Betala en enskild bot'
+end
 
 And /^I click on Bekräfta$/ do
-   click_button 'Bekräfta'
-  end
+  click_button 'Bekräfta'
+end
 
 Then /^I see the text Filippa Stark har inga obetalda böter$/ do
-   expect(page).to have_text 'Filippa Stark har inga obetalda böter'
-  end 
+  expect(page).to have_text STAFF_NO_FEE_TEXT
+end 

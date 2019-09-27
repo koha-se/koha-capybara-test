@@ -9,24 +9,25 @@
 
 
 Given /^I have opened the catalogue record$/ do
-     staff_login
+     opac_login
      opac_open_exemplar
-    end
+end
  
 When /^I click on Beställ detta exemplar$/ do
     click_button 'Beställ detta exemplar'
     expect(page).to have_text 'Beställ den här boken'
-   end
+end
 
 And /^have selected Välj avhämtningsställe Sambib$/ do
      select('Sambib', :from => 'pickupbranch')
      click_button 'Skicka beställning'
-    end
+end
 
 Then /^I should get the message Beställning skickad$/ do
      expect(page).to have_text 'Beställning skickad'
      opac_logout
      staff_login
      delete_hold
-    end
+     staff_logout
+end
     

@@ -6,14 +6,13 @@
 # Given I go to staff pages
 # When I log in with lucat details
 # Then I am logged in and UB-Adam is found on the page
-include Login
 
 When /^I log in on staff pages with lucat details$/ do
   staff_login
   expect(:current_user?).to be_truthy
 end
 
-Then /^I am logged in and UB-Adam is found on the page$/ do
+Then("I am logged in and UB-Adam is found on the page") do
   expect(page).to have_content FIRSTNAME_ADAM
   staff_logout
 end

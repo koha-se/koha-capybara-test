@@ -3,7 +3,7 @@
 #  Then I see the order button
 
 Given(/^I got the search result for 'takeaway'$/) do
-  visit(KOHA_TEST_OPAC_BASE + "/cgi-bin/koha/opac-search.pl?idx=&q=takeaway&branch_group_limit=")
+  visit(KOHA_OPAC_BASE + "/cgi-bin/koha/opac-search.pl?idx=&q=takeaway&branch_group_limit=")
 end
 
 When(/^I click for book details$/) do
