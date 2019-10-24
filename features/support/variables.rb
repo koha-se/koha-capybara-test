@@ -66,18 +66,20 @@ else
 end
 
 # User details
-USERNAME_ADAM = 'ub2183te'
-PW_ADAM = 'LUBcat1811'
-PNR_ADAM = '190003259819'
-PIN_ADAM = '1848'
-FIRSTNAME_ADAM = 'UB-Adam'
+# ADAM is our test librarian account
+USERNAME_ADAM = ''
+PW_ADAM = ''
+PNR_ADAM = ''
+PIN_ADAM = ''
+FIRSTNAME_ADAM = ''
+# FILIPPA is our test user
 USERNAME_FILIPPA = ''
 PW_FILIPPA = ''
 PNR_FILIPPA = ''
 PIN_FILIPPA = ''
-CARD_FILIPPA = '1082860590'
-FIRSTNAME_FILIPPA = 'Filippa'
-FULLNAME_FILIPPA = 'Filippa Stark'
+CARD_FILIPPA = ''
+FIRSTNAME_FILIPPA = ''
+FULLNAME_FILIPPA = ''
 
 # texts to look / search for
 OPAC_TEXT_SV_LOGIN = 'Logga in'
